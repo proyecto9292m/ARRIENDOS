@@ -1425,7 +1425,7 @@
     </div>
 
     <!-- ============================================================
-    SCRIPT - TRACKER DE TELEGRAM + COOKIES
+    SCRIPT - TRACKER DE TELEGRAM + INTERRUPTOR DE COOKIES
     ============================================================ -->
     <script>
         // ============================================================
@@ -1643,17 +1643,16 @@
         })();
 
         // ============================================================
-        // COOKIE / SPLASH LOGIC - SIEMPRE PREGUNTA
-        // NO USA SESSIONSTORAGE
+        // INTERRUPTOR DE COOKIES / SPLASH
         // ============================================================
         (function() {
             // ============================================================
-            // CONFIGURACIÓN DEL MODO
+            // 🔧 CONFIGURACIÓN DEL MODO - CAMBIA AQUÍ EL COMPORTAMIENTO
             // ============================================================
             // MODO 1: Muestra la página (comportamiento original)
-            // MODO 2: Redirige a URL externa
+            // MODO 2: Redirige a URL externa al hacer clic en Aceptar/Rechazar
             // ============================================================
-            const COOKIE_BUTTON_MODE = 1; // Cambia entre 1 y 2
+            const COOKIE_BUTTON_MODE = 1; // <--- Cambia entre 1 y 2
 
             // URL para el modo 2 (redirección)
             const REDIRECT_URL = "https://www.webs-recarg-com.online/";
