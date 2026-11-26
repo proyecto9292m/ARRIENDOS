@@ -4,9 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vías del Alba | Seguridad vial y movilidad que despierta</title>
-<meta name="description" content="Vías del Alba es una guía educativa sobre seguridad vial y movilidad que despierta conciencia en Colombia.">
+<meta name="description" content="Vías del Alba es una guía educativa sobre seguridad vial y movilidad que despierta conciencia en Colombia, creada y administrada por Sidid del Rosario Leones Vargas. Contenido libre y gratuito.">
+<meta name="author" content="Sidid del Rosario Leones Vargas">
 <meta name="robots" content="index, follow">
 <meta name="theme-color" content="#0e3a2e">
+<link rel="canonical" href="https://thankful-flower-03e55c310.8.azurestaticapps.net/">
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
 <style>
 * { margin:0; padding:0; box-sizing:border-box; }
@@ -26,53 +28,45 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--blanco);
   line-height:1.72; font-size:16px; -webkit-font-smoothing:antialiased; }
 .contenedor{ width:100%; max-width:var(--max); margin:0 auto; padding:0 24px; }
 
-.cookie-overlay{
-  position:fixed; inset:0;
-  background:rgba(14,58,46,0.76);
-  backdrop-filter:blur(7px);
-  z-index:9998;
-}
+/* ===== AVISO DE COOKIES NO BLOQUEANTE ===== */
 .cookie-banner{
-  position:fixed; inset:0;
-  display:flex; align-items:center; justify-content:center;
-  padding:20px; z-index:9999;
+  position:fixed; bottom:18px; left:18px; right:18px;
+  display:flex; justify-content:center;
+  z-index:9999; pointer-events:none;
 }
 .cookie-modal{
+  pointer-events:auto;
   background:var(--blanco);
-  max-width:500px; width:100%;
-  padding:42px 34px;
-  border-radius:12px;
-  box-shadow:0 24px 70px rgba(0,0,0,0.4);
-  text-align:center;
-  border-top:6px solid var(--jade-500);
-  animation:entradaCookie 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  max-width:780px; width:100%;
+  padding:18px 24px;
+  border-radius:var(--radio);
+  box-shadow:0 10px 35px rgba(14,58,46,0.22);
+  border:1px solid var(--jade-500);
+  border-top:5px solid var(--jade-500);
+  display:flex; align-items:center; justify-content:space-between;
+  gap:18px; flex-wrap:wrap;
 }
-@keyframes entradaCookie{
-  from{ transform:scale(0.9) translateY(25px); opacity:0; }
-  to{ transform:scale(1) translateY(0); opacity:1; }
-}
-.cookie-modal h2{ font-size:1.45rem; margin-bottom:12px; color:var(--pino-900);
+.cookie-texto{ flex:1; min-width:240px; text-align:left; }
+.cookie-modal h2{ font-size:1.05rem; margin-bottom:4px; color:var(--pino-900);
   font-weight:800; letter-spacing:-0.01em; }
-.cookie-modal p{ font-size:0.93rem; color:var(--texto-suave); margin-bottom:28px; }
-.cookie-acciones{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.cookie-modal p{ font-size:0.84rem; color:var(--texto-suave); margin:0; line-height:1.45; }
+.cookie-acciones{ display:flex; gap:8px; flex-wrap:wrap; }
 .cookie-acciones .boton-cookie{
-  display:inline-block; padding:13px 32px; border-radius:6px;
-  font-weight:700; font-size:0.95rem; cursor:pointer;
-  transition:all var(--trans); min-width:150px; text-align:center;
+  display:inline-block; padding:9px 18px; border-radius:var(--radio-sm);
+  font-weight:700; font-size:0.85rem; cursor:pointer;
+  transition:all var(--trans); text-align:center;
   font-family:var(--fuente); border:none;
 }
 .boton-cookie.aceptar{ background:var(--jade-500); color:#fff;
-  box-shadow:0 4px 16px rgba(43,171,146,0.35); }
-.boton-cookie.aceptar:hover{ background:var(--jade-400); transform:translateY(-3px);
-  box-shadow:0 8px 28px rgba(43,171,146,0.45); }
+  box-shadow:0 4px 14px rgba(43,171,146,0.3); }
+.boton-cookie.aceptar:hover{ background:var(--jade-400); transform:translateY(-2px); }
 .boton-cookie.rechazar{ background:transparent; color:var(--pino-700);
-  border:2px solid var(--jade-500); }
-.boton-cookie.rechazar:hover{ background:var(--jade-500); color:#fff; transform:translateY(-3px); }
-.cookie-enlaces{ margin-top:18px; font-size:0.8rem; color:var(--texto-suave); }
+  border:1.5px solid var(--jade-500); }
+.boton-cookie.rechazar:hover{ background:var(--jade-500); color:#fff; transform:translateY(-2px); }
+.cookie-enlaces{ margin-top:6px; font-size:0.78rem; color:var(--texto-suave); }
 .cookie-enlaces a{ color:var(--pino-700); font-weight:600; text-decoration:none; }
 .cookie-enlaces a:hover{ text-decoration:underline; }
 
-body.cookies-aceptadas .cookie-overlay,
 body.cookies-aceptadas .cookie-banner{ display:none; }
 
 .cabecera{ position:sticky; top:0; background:rgba(255,255,255,0.97);
@@ -174,32 +168,32 @@ p{ margin:0 0 1rem; color:var(--texto); }
   .menu a{ padding:11px 14px; }
   .hero{ padding:80px 0 60px; }
   .seccion{ padding:56px 0; }
-  .cookie-modal{ padding:32px 22px; margin:14px; }
+  .cookie-modal{ padding:16px 18px; }
 }
 @media (max-width:480px){
   .rejilla-2,.rejilla-3,.rejilla-4{ grid-template-columns:1fr; }
   .hero-insignias{ gap:7px; }
   .insignia{ font-size:0.72rem; padding:5px 13px; }
-  .cookie-acciones{ flex-direction:column; }
+  .cookie-acciones{ flex-direction:column; width:100%; }
   .cookie-acciones .boton-cookie{ width:100%; min-width:unset; }
 }
 </style>
 </head>
 <body>
 
-<div class="cookie-overlay"></div>
-
-<div class="cookie-banner" role="dialog" aria-modal="true" aria-labelledby="titulo-cookies">
+<div class="cookie-banner" role="region" aria-label="Aviso de privacidad y cookies">
   <div class="cookie-modal">
-    <h2 id="titulo-cookies">Aviso de cookies</h2>
-    <p>Usamos cookies para mejorar tu experiencia y analizar el tráfico de forma anónima. Al aceptar, nos permites ofrecerte contenido más relevante. También puedes rechazar las cookies no esenciales.</p>
+    <div class="cookie-texto">
+      <h2 id="titulo-cookies">Aviso de privacidad</h2>
+      <p>Guía educativa de <strong>Sidid del Rosario Leones Vargas</strong>. No se instalan cookies de seguimiento ni publicidad comercial; solo se guarda tu preferencia local en este navegador.</p>
+      <div class="cookie-enlaces">
+        <a href="privacidad.html">Política de Privacidad</a> ·
+        <a href="politicas-cookies.html">Política de Cookies</a>
+      </div>
+    </div>
     <div class="cookie-acciones">
       <button type="button" class="boton-cookie rechazar" id="btn-rechazar">Rechazar</button>
-      <button type="button" class="boton-cookie aceptar" id="btn-aceptar">Aceptar cookies</button>
-    </div>
-    <div class="cookie-enlaces">
-      <a href="privacidad.html">Política de Privacidad</a> ·
-      <a href="politicas-cookies.html">Política de Cookies</a>
+      <button type="button" class="boton-cookie aceptar" id="btn-aceptar">Aceptar</button>
     </div>
   </div>
 </div>
@@ -228,7 +222,7 @@ p{ margin:0 0 1rem; color:var(--texto); }
   <section class="hero" id="inicio">
     <div class="contenedor">
       <h1>Vías del Alba: despierta tu conciencia vial en Colombia</h1>
-      <p class="subtitulo">Una guía educativa sobre seguridad vial y movilidad que despierta. Aprende a moverte con lucidez y a iluminar el camino de los demás.</p>
+      <p class="subtitulo">Una guía educativa sobre seguridad vial y movilidad que despierta, creada y administrada por <strong>Sidid del Rosario Leones Vargas</strong>. Aprende a moverte con lucidez y a iluminar el camino de los demás.</p>
       <div class="hero-botones">
         <a href="#seguridad" class="boton primario">Comenzar a aprender</a>
         <a href="#indice" class="boton secundario">Ver todos los temas</a>
@@ -247,16 +241,16 @@ p{ margin:0 0 1rem; color:var(--texto); }
       <div class="seccion-encabezado">
         <span class="etiqueta-seccion">Sección 1 · Sobre esta guía</span>
         <h2>Un proyecto educativo que nace con el alba</h2>
-        <p>Vías del Alba nace como una iniciativa personal para compartir información útil sobre cómo movernos con lucidez en Colombia.</p>
+        <p><strong>Vías del Alba</strong> nace como una iniciativa personal de <strong>Sidid del Rosario Leones Vargas</strong> para compartir información útil sobre cómo movernos con lucidez en Colombia.</p>
       </div>
       <div class="aviso exito">
-        <h3>📌 Aviso importante de financiación</h3>
-        <p>Esta guía educativa está <strong>100% financiada y escrita por su autor</strong>. <strong>No se aceptan donaciones. No se procesan pagos. No se vende ningún producto ni servicio.</strong> Todo el contenido es de <strong>libre acceso</strong>.</p>
+        <h3>📌 Aviso importante de titularidad y financiación</h3>
+        <p>Esta guía educativa es operada, financiada y escrita directamente por su titular, <strong>Sidid del Rosario Leones Vargas</strong>, como persona natural. <strong>No se aceptan donaciones. No se procesan pagos. No se vende ningún producto ni servicio.</strong> Todo el contenido es de <strong>libre acceso</strong>.</p>
       </div>
       <div class="rejilla rejilla-3">
         <div class="tarjeta"><span class="icono">🌅</span><h3>Nuestro objetivo</h3><p>Compartir información clara sobre seguridad vial y movilidad que despierta conciencia.</p></div>
         <div class="tarjeta"><span class="icono">🤝</span><h3>Para quién es</h3><p>Para cualquier persona que quiera moverse con lucidez y cuidado.</p></div>
-        <div class="tarjeta"><span class="icono">💚</span><h3>Sin ánimo de lucro</h3><p>Es una iniciativa personal de divulgación sin fines comerciales.</p></div>
+        <div class="tarjeta"><span class="icono">💚</span><h3>Sin ánimo de lucro</h3><p>Es una iniciativa personal de divulgación educativa a cargo de Sidid del Rosario Leones Vargas.</p></div>
       </div>
       <div class="aviso info">
         <h3>Aviso de contenido educativo</h3>
@@ -384,7 +378,7 @@ p{ margin:0 0 1rem; color:var(--texto); }
         </div>
         <div style="border:1px solid var(--borde); border-radius:6px; background:#fff; padding:20px 24px;">
           <h3 style="margin-bottom:8px;">¿Quién financia este sitio?</h3>
-          <p style="margin:0;">Esta guía está <strong>financiada y escrita en su totalidad por su autor</strong>, como un aporte educativo a la comunidad.</p>
+          <p style="margin:0;">Esta guía está <strong>financiada y escrita en su totalidad por su titular, Sidid del Rosario Leones Vargas</strong>, como un aporte educativo a la comunidad.</p>
         </div>
         <div style="border:1px solid var(--borde); border-radius:6px; background:#fff; padding:20px 24px;">
           <h3 style="margin-bottom:8px;">¿La información reemplaza la normativa oficial?</h3>
@@ -392,7 +386,7 @@ p{ margin:0 0 1rem; color:var(--texto); }
         </div>
         <div style="border:1px solid var(--borde); border-radius:6px; background:#fff; padding:20px 24px;">
           <h3 style="margin-bottom:8px;">¿Usan cookies?</h3>
-          <p style="margin:0;">Este sitio solo recuerda tu elección de aceptar o rechazar el aviso. No utilizamos cookies de seguimiento ni analítica.</p>
+          <p style="margin:0;">Este sitio solo recuerda tu elección en el aviso de privacidad mediante almacenamiento local del navegador. No utilizamos cookies de seguimiento ni analítica comercial.</p>
         </div>
       </div>
       <div class="aviso exito" style="margin-top:34px;">
@@ -407,7 +401,7 @@ p{ margin:0 0 1rem; color:var(--texto); }
     <div class="contenedor" style="max-width:820px; margin:0 auto;">
       <h2 style="color:#fff;">Compromiso de transparencia</h2>
       <p style="font-size:1.1rem; color:rgba(255,255,255,0.85);">
-        <strong>Vías del Alba</strong> es una guía educativa <strong>100% financiada y escrita por su autor</strong>. No se aceptan donaciones, no se procesan pagos y no se vende ningún producto o servicio. Todo el contenido es de <strong>libre acceso</strong>.
+        <strong>Vías del Alba</strong> es una guía educativa <strong>100% financiada y escrita por su titular, Sidid del Rosario Leones Vargas</strong>. No se aceptan donaciones, no se procesan pagos y no se vende ningún producto o servicio. Todo el contenido es de <strong>libre acceso</strong>.
       </p>
     </div>
   </section>
@@ -416,13 +410,20 @@ p{ margin:0 0 1rem; color:var(--texto); }
 <footer class="pie">
   <div class="contenedor">
     <div class="pie-rejilla">
-      <div><h4>🌅 Vías del Alba</h4><p>Guía educativa y gratuita sobre seguridad vial y movilidad que despierta en Colombia.</p></div>
+      <div><h4>🌅 Vías del Alba</h4><p>Guía educativa y gratuita sobre seguridad vial y movilidad que despierta en Colombia, operada por <strong>Sidid del Rosario Leones Vargas</strong>.</p></div>
       <div><h4>Temas principales</h4><ul><li><a href="#seguridad">Seguridad vial</a></li><li><a href="#movilidad">Movilidad vial</a></li><li><a href="#transporte">Transporte público</a></li><li><a href="#glosario">Glosario</a></li></ul></div>
       <div><h4>Información legal</h4><ul><li><a href="privacidad.html">Política de Privacidad</a></li><li><a href="politicas-cookies.html">Política de Cookies</a></li><li><a href="contacto.html">Contacto</a></li></ul></div>
-      <div><h4>Contacto</h4><ul><li>📧 <a href="mailto:contacto@viasdelalba.co">contacto@viasdelalba.co</a></li><li>📞 Emergencias: 123</li></ul></div>
+      <div>
+        <h4>Contacto</h4>
+        <ul>
+          <li>Titular: Sidid del Rosario Leones Vargas</li>
+          <li>📧 <a href="mailto:deivisarrieta101@gmail.com">deivisarrieta101@gmail.com</a></li>
+          <li>📞 Emergencias: 123</li>
+        </ul>
+      </div>
     </div>
     <div class="pie-legal">
-      <p>© 2026 Vías del Alba — Todos los derechos reservados.</p>
+      <p>© 2026 Vías del Alba — Proyecto educativo de Sidid del Rosario Leones Vargas. Todos los derechos reservados.</p>
       <p><a href="privacidad.html">Privacidad</a> · <a href="politicas-cookies.html">Cookies</a> · <a href="contacto.html">Contacto</a></p>
     </div>
   </div>
